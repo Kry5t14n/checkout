@@ -4,8 +4,10 @@ const counters = document.getElementsByClassName('item-counter')
 const btns_less = document.getElementsByClassName('item-btn-less')
 const btns_more = document.getElementsByClassName('item-btn-more')
 
-const final_price = document.getElementById("final-price")
+let final_price = document.getElementById("final-price")
 let final_price_val = 0
+
+const reset_btn = document.getElementById('reset')
 
 
 class Item {
@@ -30,26 +32,39 @@ const items = [item1, item2, item3, item4, item5]
 
 const substractPrice = (val, count, counter) => {
     if (count > 0) {
-        final_price_val -= parseInt(val)
-        count--
+        final_price_val -= parseFloat(val)
+        count -= 1
     }
     counter.innerHTML = count
     final_price.innerHTML = `$${final_price_val}`
+    return count
 }
 
 const addPrice = (val, count, counter) => {
-    final_price_val += parseInt(val)
-    count++
+    final_price_val += parseFloat(val)
+    count += 1
     counter.innerHTML = count
     final_price.innerHTML = `$${final_price_val}`
+    return count
 }
+
+const reset = () => {
+    items.forEach((item) => {
+        item.counter.innerHTML = "0"
+        item.counter_val = 0
+    })
+    final_price.innerHTML = "$0"
+    final_price_val = 0
+}
+
 
 items.forEach((item) => {
     item.btn_less.onclick = () => {
-        substractPrice(item.price.innerHTML, item.counter_val, item.counter)
+        item.counter_val = substractPrice(item.price.innerHTML, item.counter_val, item.counter)
     }
     item.btn_more.onclick = () => {
-        addPrice(item.price.innerHTML, item.counter_val, item.counter)
+        item.counter_val = addPrice(item.price.innerHTML, item.counter_val, item.counter)
     }
 })
 
+reset_btn.onclick = reset

@@ -25,14 +25,21 @@ body {
     justify-content: center;
 }
 
+h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
 .main-container {
     background: var(--main-0);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     width: 600px;
 }
 
 article {
     align-items: center;
     background: var(--main-1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     display: flex;
     height: 65px;
     justify-content: space-between;
@@ -52,18 +59,34 @@ article {
     margin: 8px;
 }
 
-.right-side button {
+.item-btn-less, .item-btn-more {
     align-items: center;
+    background: var(--main-2);
+    border: none;
+    cursor: pointer;
     display: flex;
-    height: 20px;
+    height: 25px;
     justify-content: center;
     margin: 0 10px;
-    width: 20px;
+    transition: 100ms;
+    width: 25px;
+}
+
+.item-btn-less:active, .item-btn-more:active {
+    background: var(--main-3);
+    transform: scale(0.8);
+}
+
+.item-counter {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .summary {
     align-items: center;
     background: var(--color-light);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     display: flex;
     height: 80px;
     justify-content: space-between;
@@ -83,7 +106,17 @@ article {
     margin: 0 15px;
 }
 
-.summary-right button {
-    height: 30px;
-    width: 70px;
+#reset {
+    background: var(--color-dark);
+    border: none;
+    color: var(--main-0);
+    cursor: pointer;
+    height: 35px;
+    transition: 100ms;
+    width: 80px;
+}
+
+#reset:active {
+    background: var(--main-4);
+    transform: scale(0.9);
 }
